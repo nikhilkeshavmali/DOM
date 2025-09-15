@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h1 id="heading">DOM API</h1>
+      <ul class="list-of-nodes">
+        <li>1 node</li>
+        <li>2 node</li>
+        <li>3 node</li>
+        <li>4 node</li>
+        <li style="display: none">5 node</li>
+      </ul>
+    </div>
+    <div>
+      <h1>DOM API2</h1>
+      <input type="text" />
+      <button>click me</button>
+      <div class="value"></div>
+    </div>
+    <script>
+      let findElementById = document.getElementById("heading");
+
+      const findElementsByClassName =
+        document.getElementsByClassName("list-of-nodes");
+
+      console.log(...findElementsByClassName);
+
+      for (let elem of findElementsByClassName) {
+        console.log(elem.innerHTML);
+        console.log(elem.innerText);
+        console.log(elem.textContent);
+      }
+      //   console.log(findElementById.innerHTML);
+      //   console.log(findElementById.innerText);
+      //   console.log(findElementById.textContent);
+
+      const findElementByQuerySelector = document.querySelector("#heading");
+
+      console.log((findElementByQuerySelector.innerHTML = "Nikhil Mali"));
+
+      const findElementByQuerySelectorAll = document.querySelectorAll("li");
+      console.log(findElementByQuerySelectorAll);
+    </script>
+  </body>
+</html>

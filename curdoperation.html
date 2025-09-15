@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h1>Simple DOM Todo App</h1>
+
+      <!-- Input box jaha user apna todo likhega -->
+      <input type="text" id="inputField" />
+
+      <!-- Button jisme click karne par todo add hoga -->
+      <button class="btn">Click me</button>
+
+      <!-- Ye container hai jaha sare todo items append honge -->
+      <div class="todoListsElem">
+        <!-- <p id="todoFirst"></p>  (pehle ek hi todo rakhne ka try tha, ab multiple ke liye hataya hai) -->
+      </div>
+    </div>
+
+    <script>
+      // Input field ka reference store kar liya
+      let inputElem = document.getElementById("inputField");
+
+      // Button select kiya jispe click hone par todo add hoga
+      let clickBtn = document.querySelector(".btn");
+
+      // Todo list container jaha naye todos add honge
+      let todoElem = document.querySelector(".todoListsElem");
+
+      // Function jo todo add karta hai
+      const addTodo = () => {
+        console.log(inputElem.value); // jo user likhega usse console me dikhao
+
+        // Naya paragraph element banao jisme todo text store hoga
+        let pElem = document.createElement("p");
+
+        // pElem ke andar input ka text daalo
+        pElem.textContent = inputElem.value;
+
+        console.log(pElem); // check karne ke liye print karte hai
+
+        // pElem ko todo list ke andar append kar do
+        todoElem.append(pElem);
+
+        // Input field ko empty kar do, taaki agla text likha ja sake
+        inputElem.value = "";
+      };
+
+      // Button click hone par addTodo function call karo
+      clickBtn.addEventListener("click", () => {
+        addTodo();
+      });
+
+      // Event delegation: agar todo list container ke andar koi element (pElem) click hoga
+      todoElem.addEventListener("click", (event) => {
+        console.log(event.target); // check karo kis element pe click hua
+        let currentElem = event.target; // jis element pe click hua usse store karo
+        currentElem.remove(); // us element ko remove kar do (delete ho gaya)
+      });
+    </script>
+  </body>
+</html>
