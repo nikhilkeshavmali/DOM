@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Start Inline Event -->
+    <h1>Inline Event</h1>
+    <button onclick="alert('Welcome')">greeting</button>
+    <button ondblclick="alert('Welcome JS Course')">greeting</button>
+    <button onmouseover="alert('Welcome again')">greeting</button>
+    <!-- End Inline Event -->
+
+    <!-- Start Dom Event Handler -->
+    <h1>Dom Event Handler</h1>
+    <button id="myBtn">greeting</button>
+    <button id="myBtn1">greeting again</button>
+    <!-- End Dom Event Handler -->
+
+    <!-- Start addEventListener Event Handler -->
+    <h1>addEventListener Event handler</h1>
+    <button id="myBtn2">greeting</button>
+    <button id="myBtn3">greeting again</button>
+    <!-- End addEventListener Event Handler -->
+
+    <script>
+      document.getElementById("myBtn").onclick = function () {
+        alert("To the world best");
+      };
+
+      document.getElementById("myBtn1").onmouseover = function () {
+        alert("To the world best  111");
+      };
+
+      // addEventListener
+      
+      // document.getElementById("myBtn2").addEventListener("click", function () {
+      //   alert("javaScript Course");
+      // });
+
+      document.getElementById("myBtn2").addEventListener("click", () => {
+        alert("javaScript Course");
+      }); //fat arrow function
+
+      document
+        .getElementById("myBtn3")
+        .addEventListener("mouseover", function () {
+          alert("JavaScript course");
+        });
+    </script>
+  </body>
+</html>
