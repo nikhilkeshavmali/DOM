@@ -3,29 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Rectangle Animation - Mouse Events</title>
+
+    <style>
+      /* Rectangle box */
+      .rectangle {
+        width: 150px;
+        height: 150px;
+        background-color: #3498db;
+        margin: 2rem auto;
+        transition: all 0.5s ease; /* Smooth animation for all changes */
+      }
+
+      /* Transition classes for different effects */
+      .moveLeft {
+        translate: -30rem 0;
+      }
+
+      .moveRightCircle {
+        border-radius: 50%;
+        background-color: #f5ee62;
+        translate: 30rem 0;
+      }
+
+      .moveLeftCircle {
+        border-radius: 50%;
+        background-color: #f5ee62;
+        translate: -30rem 0;
+      }
+
+      .backSquare {
+        border-radius: 0%;
+        background-color: #3498db;
+        translate: 0 0;
+      }
+    </style>
   </head>
-  <link rel="stylesheet" href="style.css" />
   <body>
     <section>
-      <div class="reactangle"></div>
-      <button id="myButton">Click me</button>
+      <!-- Rectangle div -->
+      <div class="rectangle"></div>
+
+      <!-- Only ONE button -->
+      <button id="actionBtn">Do Action</button>
     </section>
+
     <script>
-      // get the button element by its ID
-      let myButton = document.getElementById("myButton");
+      // Select elements
       let rectDiv = document.querySelector(".rectangle");
+      let actionBtn = document.getElementById("actionBtn");
 
-      const handleMouseEvents = () => {
-        console.log("click");
+      /*
+        Mouse Events we are using:
+        1. click       -> Change color (yellow)
+        2. dblclick    -> Move left
+        3. contextmenu -> Right-click -> Move right & circle
+        4. mouseover   -> Move left & circle
+        5. mouseout    -> Back to square
+      */
+
+      // 1. Single Click -> Change background color directly
+      actionBtn.addEventListener("click", () => {
+        console.log("Single click");
         rectDiv.style.backgroundColor = "#f5ee62";
-      };
+      });
 
-      myButton.addEventListener("click", handleMouseEvents);
+      // 2. Double Click -> Add 'moveLeft'
+      actionBtn.addEventListener("dblclick", () => {
+        console.log("Double click -> Move Left");
+        rectDiv.className = "rectangle moveLeft"; // reset + add class
+      });
 
-      //   myButton.addEventListener("click",(e)=>{
-      // handleMouseEvents(e.target);
-      //   });
+      // 3. Right Click -> Add 'moveRightCircle'
+      actionBtn.addEventListener("contextmenu", (e) => {
+        e.preventDefault(); // stop default right-click menu
+        console.log("Right click -> Move Right & Circle");
+        rectDiv.className = "rectangle moveRightCircle";
+      });
+
+      // 4. Mouse Over -> Add 'moveLeftCircle'
+      actionBtn.addEventListener("mouseover", () => {
+        console.log("Mouse over -> Move Left & Circle");
+        rectDiv.className = "rectangle moveLeftCircle";
+      });
+
+      // 5. Mouse Out -> Back to Square
+      actionBtn.addEventListener("mouseout", () => {
+        console.log("Mouse out -> Back to Square");
+        rectDiv.className = "rectangle backSquare";
+      });
     </script>
   </body>
 </html>
