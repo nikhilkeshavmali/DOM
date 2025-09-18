@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Key Event Example</title>
+    <style>
+      /* Basic page styling */
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 30px;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      /* Input box styling */
+      #myInput {
+        width: 250px;
+        padding: 10px;
+        border: 2px solid #3498db;
+        border-radius: 6px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        outline: none;
+        transition: 0.3s;
+      }
+
+      #myInput:focus {
+        border-color: #2ecc71;
+        box-shadow: 0 0 5px rgba(46, 204, 113, 0.7);
+      }
+
+      /* Output container */
+      .output {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        width: 300px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .output p {
+        margin: 10px 0;
+        font-size: 16px;
+        color: #555;
+      }
+
+      .output p span {
+        font-weight: bold;
+        color: #2c3e50;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Keyboard Event Tracker</h1>
+
+    <!-- Input field -->
+    <input type="text" id="myInput" placeholder="Type something..." />
+
+    <!-- Output section -->
+    <div class="output">
+      <p class="keyPressed">Key pressed: <span>-</span></p>
+      <p class="keyCode">Key code: <span>-</span></p>
+      <p class="charCode">Char codeAt: <span>-</span></p>
+      <p class="eventType">Event Type: <span>-</span></p>
+    </div>
+
+    <script>
+      // Function to handle key press event
+      const handleKeyPress = (event) => {
+        console.log("Key pressed:", event.key);
+        console.log("Key code:", event.code);
+        console.log("Event type:", event.type);
+
+        // Display key pressed
+        document.querySelector(
+          ".keyPressed"
+        ).textContent = `Key pressed: ${event.key}`;
+
+        // Display key code
+        document.querySelector(
+          ".keyCode"
+        ).textContent = `Key code: ${event.code}`;
+
+        // Display char code
+        document.querySelector(
+          ".charCode"
+        ).textContent = `Char code: ${event.key.charCodeAt(0)}`;
+
+        // Display event type
+        document.querySelector(
+          ".eventType"
+        ).textContent = `Event type: ${event.type}`;
+      };
+
+      // Get input element
+      var myInput = document.getElementById("myInput");
+
+      // Add event listener for keydown
+      myInput.addEventListener("keydown", handleKeyPress);
+    </script>
+  </body>
+</html>

@@ -3,52 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Event Handling Example</title>
+    <style>
+      /* General page styling */
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #2c3e50;
+        font-size: 22px;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 5px;
+      }
+
+      /* Button styling */
+      button {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 6px;
+        margin: 10px 10px 10px 0;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #2ecc71;
+      }
+
+      button:active {
+        transform: scale(0.95);
+      }
+
+      /* Section container */
+      section {
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+    </style>
   </head>
   <body>
     <!-- Start Inline Event -->
-    <h1>Inline Event</h1>
-    <button onclick="alert('Welcome')">greeting</button>
-    <button ondblclick="alert('Welcome JS Course')">greeting</button>
-    <button onmouseover="alert('Welcome again')">greeting</button>
+    <section>
+      <h1>Inline Event</h1>
+      <!-- Event handled directly in HTML -->
+      <button onclick="alert('Welcome')">Greeting</button>
+      <button ondblclick="alert('Welcome JS Course')">Greeting</button>
+      <button onmouseover="alert('Welcome again')">Greeting</button>
+    </section>
     <!-- End Inline Event -->
 
     <!-- Start Dom Event Handler -->
-    <h1>Dom Event Handler</h1>
-    <button id="myBtn">greeting</button>
-    <button id="myBtn1">greeting again</button>
+    <section>
+      <h1>DOM Event Handler</h1>
+      <!-- Event handled using JS property assignment -->
+      <button id="myBtn">Greeting</button>
+      <button id="myBtn1">Greeting Again</button>
+    </section>
     <!-- End Dom Event Handler -->
 
     <!-- Start addEventListener Event Handler -->
-    <h1>addEventListener Event handler</h1>
-    <button id="myBtn2">greeting</button>
-    <button id="myBtn3">greeting again</button>
+    <section>
+      <h1>addEventListener Event Handler</h1>
+      <!-- Event handled using addEventListener -->
+      <button id="myBtn2">Greeting</button>
+      <button id="myBtn3">Greeting Again</button>
+    </section>
     <!-- End addEventListener Event Handler -->
 
     <script>
+      // DOM Event Handler (old way: using onclick, onmouseover, etc.)
       document.getElementById("myBtn").onclick = function () {
         alert("To the world best");
       };
 
       document.getElementById("myBtn1").onmouseover = function () {
-        alert("To the world best  111");
+        alert("To the world best 111");
       };
 
-      // addEventListener
-
-      
-      // document.getElementById("myBtn2").addEventListener("click", function () {
-      //   alert("javaScript Course");
-      // });
-
+      // addEventListener (modern & flexible way)
+      // Using arrow function
       document.getElementById("myBtn2").addEventListener("click", () => {
-        alert("javaScript Course");
-      }); //fat arrow function
+        alert("JavaScript Course");
+      });
 
+      // Using normal function
       document
         .getElementById("myBtn3")
         .addEventListener("mouseover", function () {
-          alert("JavaScript course");
+          alert("JavaScript Course");
         });
     </script>
   </body>
